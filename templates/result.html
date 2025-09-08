@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cloned Results</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f9dcdc, #d0c4fb);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      background: #f3f3fb;
+      margin: 12px 0;
+      padding: 16px 20px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .filename {
+      font-weight: 600;
+      color: #6a5acd;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    audio {
+      width: 100%;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #6a5acd;
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #5a4dbd;
+    }
+
+    @media (max-height: 700px) {
+      .container {
+        max-height: none;
+        margin: 40px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎧 Translated & Cloned Audio</h1>
+    <ul>
+      {% for filename in filenames %}
+        <li>
+          <div class="filename">🔉 Clone {{ loop.index }}</div>
+          <audio controls>
+            <source src="{{ url_for('download_file', filename=filename) }}" type="audio/wav">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+      {% endfor %}
+    </ul>
+    <a class="back-btn" href="/">⬅ Back to Home</a>
+  </div>
+</body>
+</html>
