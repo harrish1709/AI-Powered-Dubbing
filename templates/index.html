@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Speech Translation & Cloning</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/727/727245.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f9dcdc, #d0c4fb);
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .logo {
+      width: 60px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin: 16px 0 6px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    input[type="file"], select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background-color: #f8f8f8;
+      cursor: pointer;
+    }
+
+    button {
+      margin-top: 30px;
+      width: 100%;
+      background: #6a5acd;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 14px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #5a4dbd;
+    }
+
+    @media (max-height: 700px) {
+      .card {
+        max-height: none;
+        margin: 40px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="https://cdn-icons-png.flaticon.com/512/727/727245.png" alt="Voice Logo" class="logo"/>
+    <h1>Voice Translator & Cloner</h1>
+    <p>Translate and clone your voice across languages!</p>
+    <form method="POST" action="/process" enctype="multipart/form-data">
+      <label for="audio">Upload Source Audio (.wav)</label>
+      <input type="file" name="audio" accept=".wav" required/>
+
+      <label for="target_lang">Select Target Language</label>
+      <select name="target_lang" required>
+        <option value="en">English</option>
+        <option value="ar">Arabic</option>
+        <option value="hi">Hindi</option>
+        <option value="de">German</option>
+        <option value="fr">French</option>
+        <option value="ja">Japanese</option>
+      </select>
+
+      <label for="models">Upload Voice Model(s) (.pth)</label>
+      <input type="file" name="models" accept=".pth" multiple required/>
+
+      <button type="submit">🌍 Translate & Clone</button>
+    </form>
+  </div>
+</body>
+</html>
