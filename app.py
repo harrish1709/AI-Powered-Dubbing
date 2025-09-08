@@ -15,7 +15,7 @@ import google.generativeai as genai
 import time
 import json
 
-genai.configure(api_key="AIzaSyDxt6LK_wn_WMCJ-a9Oc9qQgKlsbzinT9o")
+genai.configure(api_key="")
 
 from TTS.tts.configs.xtts_config import XttsConfig
 from TTS.tts.models.xtts import XttsAudioConfig, XttsArgs
@@ -279,4 +279,5 @@ def download_file(filename):
     return send_file(file_path, as_attachment=True, download_name=filename, mimetype="audio/wav")
 
 if __name__ == "__main__":
+
     app.run(debug=True)
