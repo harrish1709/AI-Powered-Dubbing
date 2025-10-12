@@ -73,13 +73,6 @@ def extract_gemini_text(response):
 
     except Exception as e:
         print(f"⚠️ Gemini parsing error: {e}")
-        try:
-            with open("gemini_debug.json", "w", encoding="utf-8") as f:
-                f.write(json.dumps(response.to_dict(), indent=2, ensure_ascii=False))
-            print("📄 Raw Gemini response dumped to gemini_debug.json")
-        except Exception as dump_err:
-            print(f"⚠️ Failed to dump raw response: {dump_err}")
-        return ""
 
 def translate_with_gemini_batched(sentences,source_lang="English",target_lang="Arabic",retries=3,batch_size=5): 
     all_translations = []
@@ -281,3 +274,4 @@ def download_file(filename):
 if __name__ == "__main__":
 
     app.run(debug=True)
+
