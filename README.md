@@ -1,41 +1,38 @@
-# 🎙️ AI-Powered Dubbing
+# AI-Powered Dubbing Pipeline
 
-This project is an **AI-powered dubbing web app** built with Flask.  
-It takes an input audio file, transcribes it using Whisper, translates the speech with Google's Gemini,  
-synthesizes the translated text into speech with Coqui TTS, and finally applies **RVC (Retrieval-Based Voice Conversion)** to match a target speaker's voice.  
+A multilingual AI dubbing system that integrates speech recognition, translation, and text-to-speech synthesis for cross-lingual voice conversion.
 
----
+## Architecture
 
-## 🚀 Features
+1. **Automatic Speech Recognition (ASR)** — [Whisper v3 Large](https://github.com/openai/whisper) for high-accuracy speech-to-text transcription
+2. **Translation** — [Gemini 2.5 Flash](https://deepmind.google/technologies/gemini/) for real-time cross-lingual translation
+3. **Text-to-Speech (TTS)** — [XTTSv2](https://github.com/coqui-ai/TTS) for natural-sounding speech synthesis in the target language
 
-- 🎧 **Speech-to-Text**: Uses **Faster Whisper** for high-quality transcription.
-- 🌍 **Translation**: Integrates with **Google Gemini** for accurate multilingual translation.
-- 🗣️ **Text-to-Speech**: Uses **Coqui XTTS** to generate speech in the target language.
-- 🎤 **Voice Cloning**: Applies **RVC voice conversion** to mimic a specific speaker's voice.
-- 🎛️ **Audio Alignment**: Maintains natural timing and rhythm for professional-quality dubbing.
-- 🌐 **Flask Web App**: Simple UI for uploading files and downloading dubbed output.
+## Features
 
----
+- End-to-end dubbing pipeline from source audio to translated speech
+- Support for multiple language pairs
+- Maintains speaker voice characteristics through TTS
+- Modular architecture — each component can be swapped independently
 
-## 🏗️ Tech Stack
+## Tech Stack
 
-| Component                     | Technology                                |
-|-------------------------------|------------------------------------------|
-| **Backend Framework**        | Flask (Python)                           |
-| **Transcription**            | Faster Whisper (large-v3 model)          |
-| **Translation**              | Google Gemini Generative Model           |
-| **Text-to-Speech (TTS)**     | Coqui XTTS v2                            |
-| **Voice Conversion (VC)**    | RVC (Retrieval-Based Voice Conversion)   |
-| **Audio Processing**         | Pydub, SciPy                             |
-| **Hardware Support**         | CUDA GPU acceleration (optional)         |
+- Python
+- OpenAI Whisper v3 Large
+- Gemini 2.5 Flash
+- XTTSv2
+- FFmpeg (audio processing)
 
----
+## Getting Started
 
-## 🧩 Workflow
+```bash
+# Clone the repository
+git clone https://github.com/harrish1709/AI-Powered-Dubbing.git
+cd AI-Powered-Dubbing
 
-1. **Upload Audio** + Target Speaker Models (`.pth` RVC models).
-2. **Transcription**: Whisper model converts speech → text.
-3. **Translation**: Gemini translates sentences into target language.
-4. **Text-to-Speech**: Coqui XTTS generates target-language audio.
-5. **Voice Conversion**: RVC applies the target speaker's timbre.
-6. **Output**: Download the final dubbed audio.
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the pipeline
+python main.py --input audio.mp3 --source-lang en --target-lang ta
+```
